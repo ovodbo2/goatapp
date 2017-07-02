@@ -12,17 +12,24 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var homeButton: DesignableButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tableView.delegate = self
-        tableView.dataSource = self
+//        tableView.delegate = self
+//        tableView.dataSource = self
         
         tableView.separatorStyle = .none
         
         navBar.setBackgroundImage(UIImage(), for: .default)
         navBar.shadowImage = UIImage()
+        
+//        self.homeButton.image = UIImage(named: "goat-icon")?.withRenderingMode(.alwaysTemplate)
+//        self.homeButton.tintColor = UIColor.white
+        
+        self.homeButton.setImage(UIImage(named: "goat-icon")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        self.homeButton.tintColor = UIColor.white
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,7 +47,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         cell.textLabel?.text = SharedInstance.share.dummyData[indexPath.row]
         cell.textLabel?.font = UIFont(name: "Avenir Next", size: 20)
 //        cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 20)
-        cell.textLabel?.textColor = UIColor.red
+        cell.textLabel?.textColor = UIColor.white
+        cell.layer.cornerRadius = 15
         return cell
         
     }

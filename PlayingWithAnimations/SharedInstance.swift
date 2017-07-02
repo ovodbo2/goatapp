@@ -12,5 +12,5 @@ class SharedInstance: NSObject {
     static let share = SharedInstance()
     let dummyData = ["Luke", "Anakin", "Yoda", "Mace", "ObiWan", "Rey", "Kylo"]
     
-    
+    //test
 }
