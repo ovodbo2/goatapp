@@ -13,6 +13,8 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var logo: UIImageView!
     
+    weak var customDelegate2: ReloadAnimationDelegate2?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,6 +26,12 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     }
     
     @IBAction func onExit(_ sender: UIButton) {
+        if let del = customDelegate2 {
+            del.reloadAnimation()
+        } else {
+            print("Delegate not set")
+        }
+        
         dismiss(animated: true, completion: nil)
     }
     
@@ -32,7 +40,7 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 5
+        return SharedInstance.share.voices.count
     }
     
 //    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
@@ -43,10 +51,14 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let pickerLabel = UILabel()
-        pickerLabel.font = UIFont(name: "Avenir Next", size: 30)
-        pickerLabel.text = "Test"
+        pickerLabel.font = UIFont(name: "AvenirNext-Medium", size: 30)
+        pickerLabel.text = SharedInstance.share.voices[row].name.description
         pickerLabel.textColor = UIColor.white
         pickerLabel.textAlignment = .center
         return pickerLabel
     }
+}
+
+protocol ReloadAnimationDelegate2: class {
+    func reloadAnimation()
 }

@@ -13,9 +13,11 @@ class AddViewController: UIViewController {
     @IBOutlet weak var logo: UIImageView!
     @IBOutlet weak var textField: UITextField!
     
+    weak var customDelegate: ReloadAnimationDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.logo.image = UIImage(named: "goat-icon")?.withRenderingMode(.alwaysTemplate)
         self.logo.tintColor = UIColor.white
         
@@ -24,10 +26,20 @@ class AddViewController: UIViewController {
     }
     
     @IBAction func dismissPopup(_ sender: UIButton) {
+        if let del = customDelegate {
+            del.reloadAnimation()
+        } else {
+            print("Delegate not set")
+        }
+        
         dismiss(animated: true, completion: nil)
     }
     
     @IBAction func onSave(_ sender: Any) {
         
     }
+}
+
+protocol ReloadAnimationDelegate: class {
+    func reloadAnimation()
 }

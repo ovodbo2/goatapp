@@ -7,10 +7,16 @@
 //
 
 import UIKit
+import AVFoundation
 
 class SharedInstance: NSObject {
     static let share = SharedInstance()
-    let dummyData = ["Luke", "Anakin", "Yoda", "Mace", "ObiWan", "Rey", "Kylo"]
+    let dummyData = ["Luke", "Anakin", "Yoda", "Mace", "ObiWan", "Rey", "Kylo", "R2D2", "C3PO", "Poe", "Finn", "Han", "QuiGon", "Lando", "BB8", "Chewy"]
+    var voices = [AVSpeechSynthesisVoice]()
     
-    //test
+    func getVoices() {
+        for voice in AVSpeechSynthesisVoice.speechVoices() {
+            SharedInstance.share.voices.append(voice)
+        }
+    }
 }
