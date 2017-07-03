@@ -62,13 +62,21 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="oyj-0k-tUm">
+                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="3" minValue="1" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="oyj-0k-tUm" customClass="DesignableSlider" customModule="PlayingWithAnimations" customModuleProvider="target">
                                                     <rect key="frame" x="-2" y="200.5" width="234" height="51"/>
                                                     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="CXH-o4-xIi"/>
                                                         <constraint firstAttribute="width" constant="230" id="O0O-FI-7tf"/>
                                                     </constraints>
+                                                    <color key="thumbTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="image" keyPath="thumbImage" value="goat-icon"/>
+                                                        <userDefinedRuntimeAttribute type="image" keyPath="highlightedThumbImage" value="goat-icon"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="onRateSlider:" destination="H4E-Du-v5d" eventType="valueChanged" id="sLt-g1-VNl"/>
+                                                    </connections>
                                                 </slider>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pitch" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tPz-Nb-SxR">
                                                     <rect key="frame" x="88.5" y="250.5" width="53" height="30"/>
@@ -79,13 +87,21 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="7Zx-9l-DJt">
+                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="3" minValue="1" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="7Zx-9l-DJt" customClass="DesignableSlider" customModule="PlayingWithAnimations" customModuleProvider="target">
                                                     <rect key="frame" x="-2" y="280.5" width="234" height="51"/>
                                                     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="230" id="1fh-oV-dgA"/>
                                                         <constraint firstAttribute="height" constant="50" id="cOe-iH-rPo"/>
                                                     </constraints>
+                                                    <color key="thumbTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="image" keyPath="thumbImage" value="goat-icon"/>
+                                                        <userDefinedRuntimeAttribute type="image" keyPath="highlightedThumbImage" value="goat-icon"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="onPitchSlider:" destination="H4E-Du-v5d" eventType="valueChanged" id="6nA-Pp-RrD"/>
+                                                    </connections>
                                                 </slider>
                                             </subviews>
                                             <constraints>
@@ -94,18 +110,10 @@
                                             </constraints>
                                         </stackView>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="GMP-fG-Cae">
-                                            <rect key="frame" x="106" y="414" width="78" height="38"/>
+                                            <rect key="frame" x="106" y="434" width="78" height="18"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="goat-icon" translatesAutoresizingMaskIntoConstraints="NO" id="9eU-X6-JIR">
-                                                    <rect key="frame" x="29" y="0.0" width="20" height="20"/>
-                                                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="20" id="5lG-3y-lTJ"/>
-                                                        <constraint firstAttribute="width" constant="20" id="JKn-UO-RTd"/>
-                                                    </constraints>
-                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version 1.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CYs-aO-tqh">
-                                                    <rect key="frame" x="0.0" y="20" width="78" height="18"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="78" height="18"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Heavy" family="Avenir Next" pointSize="13"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -146,8 +154,9 @@
                         <blurEffect style="light"/>
                     </visualEffectView>
                     <connections>
-                        <outlet property="logo" destination="9eU-X6-JIR" id="voy-lc-gPY"/>
                         <outlet property="pickerView" destination="F11-In-Hrk" id="8f8-Ya-Gmm"/>
+                        <outlet property="pitchSlider" destination="7Zx-9l-DJt" id="LD5-rL-yiH"/>
+                        <outlet property="rateSlider" destination="oyj-0k-tUm" id="IsT-uz-zwu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Se-Ex-4qU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -178,26 +187,26 @@
                                     <offsetWrapper key="textShadowOffset" horizontal="-4" vertical="3"/>
                                 </textAttributes>
                                 <items>
-                                    <navigationItem title="Goat List" id="mHp-El-pA3">
+                                    <navigationItem id="mHp-El-pA3">
                                         <leftBarButtonItems>
-                                            <barButtonItem image="settings-icon" style="plain" id="AhB-hI-M3K">
+                                            <barButtonItem image="settings-icon" id="AhB-hI-M3K">
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <connections>
                                                     <segue destination="H4E-Du-v5d" kind="presentation" identifier="settings" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="chD-H2-0Uc"/>
                                                 </connections>
                                             </barButtonItem>
-                                            <barButtonItem style="plain" systemItem="trash" id="6G0-Oa-446">
+                                            <barButtonItem systemItem="trash" id="6G0-Oa-446">
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </barButtonItem>
                                         </leftBarButtonItems>
                                         <rightBarButtonItems>
-                                            <barButtonItem style="plain" systemItem="add" id="tiz-Ei-WvS">
+                                            <barButtonItem systemItem="add" id="tiz-Ei-WvS">
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <connections>
                                                     <segue destination="eO8-3D-hIz" kind="presentation" identifier="addnew" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="pWq-Ke-waX"/>
                                                 </connections>
                                             </barButtonItem>
-                                            <barButtonItem image="info-icon" style="plain" id="wTf-Xu-pBX">
+                                            <barButtonItem image="info-icon-2" id="wTf-Xu-pBX">
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </barButtonItem>
                                         </rightBarButtonItems>
@@ -213,7 +222,7 @@
                                         <rect key="frame" x="0.0" y="28" width="343" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Zty-Ue-80I" id="snK-YE-fOj">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="0.54767765410958902" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -226,7 +235,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6gy-rS-OeP" customClass="DesignableButton" customModule="PlayingWithAnimations" customModuleProvider="target">
-                                <rect key="frame" x="42" y="597" width="290" height="50"/>
+                                <rect key="frame" x="31" y="597" width="313" height="50"/>
                                 <color key="backgroundColor" red="0.24587652090000001" green="0.39724946020000002" blue="0.70356476310000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Z7m-VV-ePg"/>
@@ -265,18 +274,19 @@
                             <constraint firstItem="jwd-KP-nHD" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="ZB4-gD-NbI"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="onL-g0-3Bb" secondAttribute="bottom" id="bKh-bC-lmt"/>
                             <constraint firstItem="onL-g0-3Bb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="eca-uK-Idv"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="6gy-rS-OeP" secondAttribute="trailing" constant="27" id="fyD-7C-U4g"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="6gy-rS-OeP" secondAttribute="trailing" constant="15" id="fyD-7C-U4g"/>
                             <constraint firstItem="jwd-KP-nHD" firstAttribute="top" secondItem="63e-EH-xLc" secondAttribute="bottom" id="l0r-pA-7Wk"/>
                             <constraint firstItem="63e-EH-xLc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="lw9-ol-3ad"/>
                             <constraint firstItem="Vqi-dY-0TO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="mZH-Ab-2aC"/>
                             <constraint firstItem="63e-EH-xLc" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="mvr-Iz-Cn4"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Vqi-dY-0TO" secondAttribute="bottom" id="q6h-AE-96F"/>
                             <constraint firstAttribute="trailing" secondItem="onL-g0-3Bb" secondAttribute="trailing" id="uNd-wE-iGi"/>
-                            <constraint firstItem="6gy-rS-OeP" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="26" id="wWK-O8-hls"/>
+                            <constraint firstItem="6gy-rS-OeP" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="15" id="wWK-O8-hls"/>
                             <constraint firstAttribute="trailing" secondItem="Vqi-dY-0TO" secondAttribute="trailing" id="zEf-Pi-Ehe"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="dboLabel" destination="onL-g0-3Bb" id="iou-FC-brS"/>
                         <outlet property="homeButton" destination="6gy-rS-OeP" id="gAE-lp-o6m"/>
                         <outlet property="navBar" destination="63e-EH-xLc" id="etR-dE-dkK"/>
                         <outlet property="tableView" destination="jwd-KP-nHD" id="nQy-bd-HNn"/>
@@ -312,7 +322,7 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="goat-icon" translatesAutoresizingMaskIntoConstraints="NO" id="KK9-Oo-rEk">
                                                     <rect key="frame" x="0.0" y="0.0" width="220" height="40"/>
                                                 </imageView>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Enter goat here" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OWW-9P-Tvn">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Enter here" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OWW-9P-Tvn">
                                                     <rect key="frame" x="0.0" y="50" width="220" height="40"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -390,7 +400,7 @@
         <image name="exit-icon" width="50" height="50"/>
         <image name="goat-bg-2" width="557" height="720"/>
         <image name="goat-icon" width="25" height="25"/>
-        <image name="info-icon" width="25" height="25"/>
+        <image name="info-icon-2" width="25" height="25"/>
         <image name="settings-icon" width="25" height="25"/>
     </resources>
 </document>

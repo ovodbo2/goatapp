@@ -36,7 +36,15 @@ class AddViewController: UIViewController {
     }
     
     @IBAction func onSave(_ sender: Any) {
+        SharedInstance.share.save(itemToSave: textField.text!.description)
+    
+        if let del = customDelegate {
+            del.reloadAnimation()
+        } else {
+            print("Delegate not set")
+        }
         
+        dismiss(animated: true, completion: nil)
     }
 }
 

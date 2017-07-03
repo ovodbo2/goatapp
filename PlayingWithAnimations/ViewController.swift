@@ -13,6 +13,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var homeButton: DesignableButton!
+    @IBOutlet weak var dboLabel: UILabel!
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +24,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         tableView.isHidden = true
         
         homeButton.isHidden = true
+        dboLabel.isHidden = true
         
         //make navbar clear
         navBar.setBackgroundImage(UIImage(), for: .default)
@@ -34,7 +36,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         self.homeButton.setImage(UIImage(named: "goat-icon")?.withRenderingMode(.alwaysTemplate), for: .normal)
         self.homeButton.tintColor = UIColor.white
         
-        
+        self.tableView.reloadData()
+        SharedInstance.share.retrieve()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -43,6 +46,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func reloadAnimation() {
+        self.tableView.reloadData()
         animateTableCells()
     }
     
@@ -60,6 +64,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         tableView.isHidden = false
         homeButton.isHidden = false
+        dboLabel.isHidden = false
+        
+        dboLabel.transform = CGAffineTransform(scaleX: 25, y: 0)
+        UIView.animate(withDuration: 1) {
+            self.dboLabel.transform = .identity
+        }
         
         homeButton.transform = CGAffineTransform(translationX: 0, y: view.frame.height)
         UIView.animate(withDuration: 1.5) {
@@ -69,7 +79,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let cells = tableView.visibleCells
         
         for cell in cells {
-            cell.transform = CGAffineTransform(translationX: view.frame.height, y: 0)
+            cell.transform = CGAffineTransform(translationX: view.frame.width, y: 0)
         }
         
         var delay = 0.2
@@ -89,19 +99,28 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return SharedInstance.share.dummyData.count
+        return SharedInstance.share.listItems.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = SharedInstance.share.dummyData[indexPath.row]
-        cell.textLabel?.font = UIFont(name: "AvenirNext-Bold", size: 25)
-//        cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 20)
-        cell.textLabel?.textColor = UIColor(red: 63/255, green: 101/255, blue: 179/255, alpha: 1)
+        
+        if SharedInstance.share.listItems.count != 0 {
+            let result = SharedInstance.share.listItems[indexPath.row].value(forKey: "item") as? String!
+            cell.textLabel?.text = result
+            cell.textLabel?.textColor = UIColor(red: 63/255, green: 101/255, blue: 179/255, alpha: 1)
+            cell.layer.borderColor = UIColor(red: 63/255, green: 101/255, blue: 179/255, alpha: 1).cgColor
+        } else {
+            cell.textLabel?.text = "This space is empty :("
+            cell.textLabel?.textColor = UIColor.black
+            cell.layer.borderColor = UIColor.black.cgColor
+        }
+        
+        cell.textLabel?.font = UIFont(name: "AvenirNext-Bold", size: 22)
         cell.layer.cornerRadius = 20
         cell.textLabel?.textAlignment = .center
-        cell.layer.borderColor = UIColor(red: 63/255, green: 101/255, blue: 179/255, alpha: 1).cgColor
         cell.layer.borderWidth = 0.5
+
         return cell
         
     }
@@ -137,5 +156,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 //    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
 //        return "The Goat"
 //    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            SharedInstance.share.deleteOneItem(itemToDelete: indexPath.row)
+        }
+        
+        self.tableView.reloadData()
+    }
 }
 

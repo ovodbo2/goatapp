@@ -22,6 +22,7 @@
 		1BFCD4C71F08833300899D6A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFCD4C61F08833300899D6A /* SettingsViewController.swift */; };
 		1BFCD4CB1F088DCC00899D6A /* SharedInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFCD4CA1F088DCC00899D6A /* SharedInstance.swift */; };
 		1BFCD4CD1F09C00500899D6A /* CustomDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFCD4CC1F09C00500899D6A /* CustomDelegate.swift */; };
+		1BFCD4CF1F0AA67100899D6A /* DesignableSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFCD4CE1F0AA67100899D6A /* DesignableSlider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		1BFCD4C61F08833300899D6A /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		1BFCD4CA1F088DCC00899D6A /* SharedInstance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedInstance.swift; sourceTree = "<group>"; };
 		1BFCD4CC1F09C00500899D6A /* CustomDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomDelegate.swift; sourceTree = "<group>"; };
+		1BFCD4CE1F0AA67100899D6A /* DesignableSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableSlider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 				1BFCD4C21F08753000899D6A /* GenericDesignableButton.swift */,
 				1BFCD4B91F082ACA00899D6A /* DesignableButton.swift */,
 				1BFCD4BE1F08414500899D6A /* DesignableView.swift */,
+				1BFCD4CE1F0AA67100899D6A /* DesignableSlider.swift */,
 			);
 			name = IBDesignables;
 			sourceTree = "<group>";
@@ -192,6 +195,7 @@
 				1BFCD4BF1F08414500899D6A /* DesignableView.swift in Sources */,
 				1BFCD4CB1F088DCC00899D6A /* SharedInstance.swift in Sources */,
 				1BFCD4A41F05CDFE00899D6A /* AppDelegate.swift in Sources */,
+				1BFCD4CF1F0AA67100899D6A /* DesignableSlider.swift in Sources */,
 				1BFCD4AC1F05CDFE00899D6A /* PlayingWithAnimations.xcdatamodeld in Sources */,
 				1BFCD4BA1F082ACA00899D6A /* DesignableButton.swift in Sources */,
 				1BFCD4C31F08753000899D6A /* GenericDesignableButton.swift in Sources */,

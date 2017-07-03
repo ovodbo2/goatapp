@@ -12,6 +12,8 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
 
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var logo: UIImageView!
+    @IBOutlet weak var rateSlider: UISlider!
+    @IBOutlet weak var pitchSlider: UISlider!
     
     weak var customDelegate2: ReloadAnimationDelegate2?
     
@@ -21,8 +23,8 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         pickerView.delegate = self
         pickerView.dataSource = self
         
-        self.logo.image = UIImage(named: "goat-icon")?.withRenderingMode(.alwaysTemplate)
-        self.logo.tintColor = UIColor.white
+//        self.logo.image = UIImage(named: "goat-icon")?.withRenderingMode(.alwaysTemplate)
+//        self.logo.tintColor = UIColor.white
     }
     
     @IBAction func onExit(_ sender: UIButton) {
@@ -56,6 +58,14 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         pickerLabel.textColor = UIColor.white
         pickerLabel.textAlignment = .center
         return pickerLabel
+    }
+    
+    @IBAction func onRateSlider(_ sender: UISlider) {
+        rateSlider.value = roundf(rateSlider.value)
+    }
+
+    @IBAction func onPitchSlider(_ sender: Any) {
+        pitchSlider.value = roundf(pitchSlider.value)
     }
 }
 
